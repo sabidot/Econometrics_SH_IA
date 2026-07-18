@@ -59,7 +59,7 @@ estat gof, stats(all)
 * 4. Generate Phone Dependency
 *------------------------------------------------------*
 
-Extract each latent factor score separately by explicitly naming  the latent variable being predicted — required syntax after sem
+* Extract each latent factor score separately by explicitly naming  the latent variable being predicted — required syntax after sem
 predict att_score, latent(Attitudes)
 predict soc_score, latent(SocialNorms)
 predict lim_score, latent(Limitations)
@@ -102,6 +102,11 @@ regress phone_dependency i.fitin##i.gender##i.age i.p_educ i.racethnicity i.inco
 *------------------------------------------------------*
 eststo interaction: regress phone_dependency i.fitin##i.gender##i.age i.p_educ  i.racethnicity i.income i.internet i.housing  i.home_type i.phoneservice i.region4 i.hhsize i.metro, vce(robust)
 esttab interaction using "D:\IBA 29\7th Semester\Economterics\76_SabibaHossain_Econometrics\results.rtf", replace b(3) se(3) star(* 0.10 ** 0.05 *** 0.01) r2 ar2  title("Table: Multiple Regression Results — Interaction Model") label compress
+
+*------------------------------------------------------*
+* 8. Margin Analysis
+*------------------------------------------------------*
+margins gender#age, dydx(fitin)
 
 *******************************************************
 *   END OF DO-FILE
